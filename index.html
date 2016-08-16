@@ -1,0 +1,101 @@
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Projeções 3D</title>
+</head>
+
+<body>
+    <h1 class="titulo-principal ff-open texto-center">Projeções 3D</h1>
+	
+    <div id="parametros" class="parametros col-xs-4">
+        <div class="col-xs-12 bg1 param-box">
+            <h4 class="titulo-parametro texto-center">Ponto de Vista</h4>
+            <div class="param-vista col-xs-12 no-padding">
+                <div class="col-xs-4">
+                    <label class="col-xs-8 text-center no-padding">X:</label>
+                    <input id="vista-x" class="col-xs-4 no-padding" type="number" name="vista-x" value="0" onchange="configuraProjecao();">
+                </div>
+                <div class="col-xs-4">
+                    <label class="col-xs-8 text-center no-padding">Y:</label>
+                    <input id="vista-y" class="col-xs-4 no-padding" type="number" name="vista-y" value="0" onchange="configuraProjecao();">
+                </div>
+                <div class="col-xs-4">
+                    <label class="col-xs-8 text-center no-padding">Z:</label>
+                    <input id="vista-z" class="col-xs-4 no-padding" type="number" name="vista-z" value="0" onchange="configuraProjecao();">
+                </div>
+            </div>
+        </div>
+
+        <div class="col-xs-12 bg2 param-box">
+            <h4 class="titulo-parametro texto-center">Plano de Projeção</h4>
+            <div class="param-proj col-xs-12 no-padding">
+                <div class="col-xs-12">
+                    <label class="col-xs-3 text-center no-padding">P1:</label>
+                    <input id="plano-proj-p1x" class="col-xs-3 no-padding" type="number" name="plano-proj-p1" onchange="configuraProjecao();">
+                    <input id="plano-proj-p1y" class="col-xs-3 no-padding" type="number" name="plano-proj-p1" onchange="configuraProjecao();">
+                    <input id="plano-proj-p1z" class="col-xs-3 no-padding" type="number" name="plano-proj-p1" onchange="configuraProjecao();">
+                </div>
+                <div class="col-xs-12">
+                    <label class="col-xs-3 text-center no-padding">P2:</label>
+                    <input id="plano-proj-p2x" class="col-xs-3 no-padding" type="number" name="plano-proj-p2" onchange="configuraProjecao();">
+                    <input id="plano-proj-p2y" class="col-xs-3 no-padding" type="number" name="plano-proj-p2" onchange="configuraProjecao();">
+                    <input id="plano-proj-p2z" class="col-xs-3 no-padding" type="number" name="plano-proj-p2" onchange="configuraProjecao();">
+                </div>
+                <div class="col-xs-12">
+                    <label class="col-xs-3 text-center no-padding">P3:</label>
+                    <input id="plano-proj-p3x" class="col-xs-3 no-padding" type="number" name="plano-proj-p3" onchange="configuraProjecao();">
+                    <input id="plano-proj-p3y" class="col-xs-3 no-padding" type="number" name="plano-proj-p3" onchange="configuraProjecao();">
+                    <input id="plano-proj-p3z" class="col-xs-3 no-padding" type="number" name="plano-proj-p3" onchange="configuraProjecao();">
+                </div>
+            </div>
+        </div>
+
+        <div class="col-xs-12 bg1 param-box">
+            <h4 class="titulo-parametro texto-center">Objeto</h4>
+            <div class="param-obj col-xs-12 no-padding">
+                <div class="col-xs-12 no-padding">
+                    <label class="col-xs-4 text-center no-padding" style="margin-bottom:15px;">Num Vértices</label>
+                    <input id="num-vertices" class="col-xs-4 no-padding" type="number" name="num-vertices">
+                    <button class="btn btn-configurar col-xs-4" onclick="configurarVertices()">Configurar Vertices</button>
+                </div>
+                <div id="vertices-div" class="col-xs-12 no-padding"></div> 
+
+                <div class="col-xs-12 no-padding">
+                    <label class="col-xs-4 text-center no-padding" style="margin-bottom:15px";>Num Superfícies:</label>
+                    <input id="num-superficies" class="col-xs-4 no-padding" type="number" name="num-superficies">
+                    <button class="btn btn-configurar col-xs-4" onclick="configurarSuperficies()">Configurar Superficies</button>
+                </div>
+                <div id="superficies-div" class="col-xs-12 no-padding"></div>
+
+            </div>
+        </div>
+    </div>
+	
+    <div id="projecao" class="projecao col-xs-6">
+        <div id="canvas"></div>
+        <button class="btn btn-plotar" onclick="configuraProjecao();">Plotar</button>
+    </div>
+
+    <div id="" class="projecao col-xs-2 bg1">
+        <div class="col-xs-12 no-padding">
+            <h4 class="titulo-parametro texto-center">Objetos Prontos</h4>
+            <button class="col-xs-5 btn btn-objeto" onclick="plotCubo()" style="float:left;">Cubo</button>
+            <button class="col-xs-5 btn btn-objeto" onclick="plotCasa()" style="float:right;">Casa</button>
+            </div>
+        </div>
+    </div>
+ </body>
+</html>
+
+<script type="text/javascript" src="plugins/jquery.min.js"></script>
+<script type="text/javascript" src="plugins/bootstrap.min.js"></script>
+<script type="text/javascript" src="plugins/jsgl.min.js"></script>
+
+<script type="text/javascript" src="scripts/funcoes.js"></script>
+<script type="text/javascript" src="scripts/projecao.js"></script>
+<script type="text/javascript" src="scripts/objetos.js"></script>
+
+<link rel="stylesheet" type="text/css" href="css/bootstrap-3.3.6-dist/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="css/style.css">
+<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700,300' rel='stylesheet' type='text/css'>

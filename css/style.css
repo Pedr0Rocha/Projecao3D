@@ -1,0 +1,84 @@
+/* GERAL */
+
+.ff-open {
+    font-family: 'Open Sans', sans-serif;
+}
+.no-padding {
+    padding: 0 !important;
+}
+ul {
+    list-style: none;
+}
+.transition {
+    transition: all ease 0.5s;
+}
+.texto-center {
+    text-align: center;
+}
+.texto-right {
+    text-align: right;
+}
+body {
+    color: #000;
+}
+
+/* CUSTOM */
+input[type=number] {
+    min-width: 30px;
+    max-width: 50px;
+}
+.param-box {
+    padding: 15px 0 15px 0;
+}
+.titulo-principal {
+
+}
+.titulo-parametro {
+    color: #000;
+    letter-spacing: 1.4px;
+    font-weight: bold;
+}
+.bg1 {
+    background-color: #eee !important;
+}
+.bg2 {
+    background-color: #d6d6d6 !important;
+}
+.btn-configurar {
+    margin-left: 10px;
+    background-color: #23233a;
+    color: #fff;
+    height: 24px;
+    font-size: 12px;
+    letter-spacing: 1.4px;
+}
+.btn-configurar:hover {
+    background-color: #616182;
+    color: #fff;
+}
+.btn-objeto {
+    background-color: #23233a;
+    color: #fff;
+}
+.btn-objeto:hover {
+    background-color: #616182;
+    color: #fff;
+}
+.btn-plotar {
+    width: 600px;
+    margin-top: 30px;
+    background-color: #23233a;
+    color: #fff;   
+}
+.btn-plotar:hover {
+    background-color: #616182;
+    color: #fff;
+}
+#vertices-div {
+    margin-bottom: 15px;
+}
+#canvas{
+    width: 600px;
+    height: 500px;
+    border: 1px solid #d6d6d6;
+}
