@@ -43,6 +43,13 @@ function Projecao(){
         var normal = this.getNormal(this.planoProj.p1, this.planoProj.p2, this.planoProj.p3);
         var d0 = r0.x * normal[0] + r0.y * normal[1] + r0.z * normal[2];
 
+        if (this.tipoProjecao === "paralela") {
+            this.pontoVista.x = 0;
+            this.pontoVista.y = 0;
+            this.pontoVista.z = 1;
+            setPontoVista(0, 0, 1);
+        }
+
         var a = this.pontoVista.x;
         var b = this.pontoVista.y;
         var c = this.pontoVista.z;
@@ -65,7 +72,7 @@ function Projecao(){
         ];
 
         var verticesMatriz = this.getVerticesMatriz();
-        var matrizAplicada = [];
+        var matrizAplicada = [];   
         if (this.tipoProjecao === "perspectiva")  
             matrizAplicada = this.multiplicaMatriz(matrizPerspectiva, verticesMatriz);
         else 

@@ -1,5 +1,3 @@
-
-
 function plotCubo(){
     var numVertices = 8;
     var numSuperficies = 6;
