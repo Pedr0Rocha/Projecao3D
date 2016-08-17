@@ -7,6 +7,8 @@ function configuraProjecao(){
     projecao.pontoVista = getPontoVista();
     projecao.planoProj = getPlanoProjecao();
 
+    projecao.tipoProjecao = getTipoProjecao();
+
     projecao.numVertices = getNumVertices();
     var vertices = getVertices();
     for (var i = 0; i < vertices.length; i++)
@@ -173,4 +175,8 @@ function getNumVertices() {
 }
 function getNumSuperficies() {
 	return parseInt(document.getElementById("num-superficies").value);
+}
+
+function getTipoProjecao() {
+	return document.getElementById("tipo-projecao").value;
 }

@@ -27,7 +27,7 @@ function Projecao(){
     this.numSuperficies = 0;
     this.superficies = new Array();
 
-    this.type = "per";
+    this.tipoProjecao = "";
 
     this.criaNovoVertice = function(x, y, z) {
         this.vertices.push({
@@ -42,6 +42,13 @@ function Projecao(){
 
         var normal = this.getNormal(this.planoProj.p1, this.planoProj.p2, this.planoProj.p3);
         var d0 = r0.x * normal[0] + r0.y * normal[1] + r0.z * normal[2];
+
+        if (this.tipoProjecao === "paralela") {
+            this.pontoVista.x = 0;
+            this.pontoVista.y = 0;
+            this.pontoVista.z = 1;
+            setPontoVista(0,0,1);
+        }
 
         var a = this.pontoVista.x;
         var b = this.pontoVista.y;
@@ -64,19 +71,17 @@ function Projecao(){
                     [                  0,                 0,                  0,     d]
         ];
 
-        console.log(this.vertices);
         var verticesMatriz = this.getVerticesMatriz();
-        console.log(verticesMatriz);
         var matrizAplicada = [];
-        if (this.type === "per") 
+        console.log(this.tipoProjecao);
+        if (this.tipoProjecao === "perspectiva")  
             matrizAplicada = this.multiplicaMatriz(matrizPerspectiva, verticesMatriz);
         else 
             matrizAplicada = this.multiplicaMatriz(matrizParalela, verticesMatriz);
 
         matrizAplicada = this.transformaParaCartesiano(matrizAplicada);
 
-        /* Capotando */
-        for (var i = 0; i < this.numVertices; i++)
+        for (var i = 0; i < this.numVertices; i++) 
             matrizAplicada[1][i] = -matrizAplicada[1][i];
 
         matrizAplicada = this.janelaViewPort(matrizAplicada);
@@ -163,7 +168,6 @@ function Projecao(){
     this.transformaParaCartesiano = function(matriz){
         var matrizAplicada = [[], [], []];
         for (var i = 0; i < this.numVertices; i++) {
-            //var z = matriz[2][i] / matriz[3][i];
             matrizAplicada[0].push(matriz[0][i] / matriz[3][i]);
             matrizAplicada[1].push(matriz[1][i] / matriz[3][i]);
             matrizAplicada[2].push(1);
