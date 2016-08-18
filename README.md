@@ -1,2 +1,2 @@
-# Projecao3D
+# Projecao 3D
 Trabalho de Computação Gráfica

@@ -2,7 +2,7 @@ function plotCubo(){
     var numVertices = 8;
     var numSuperficies = 6;
 
-    setPontoVista(10, 10, -10);
+    setPontoVista(2, 5, 10);
 
     var p1 = [1, 0, 0];
     var p2 = [0, 0, 0];

@@ -9,19 +9,17 @@ function Projecao(){
     };
 
     this.viewport = { 
-        umin: 50, 
-        vmin: 50, 
-        umax: 550, 
-        vmax: 450
+        umin: 50,  vmin: 50, 
+        umax: 550, vmax: 450
     };
 
     this.numVertices = 0;
     this.vertices = new Array();
 
     this.planoProj = { 
-        p1: { x: 0, y: 0, z:0},
-        p2: { x: 0, y: 0, z:0},
-        p3: { x: 0, y: 0, z:0}
+        p1: { x: 0, y: 0, z: 0 },
+        p2: { x: 0, y: 0, z: 0 },
+        p3: { x: 0, y: 0, z: 0 }
     };
 
     this.numSuperficies = 0;
@@ -95,6 +93,7 @@ function Projecao(){
 
         if (this.anguloRotacao != 0) 
             matrizAplicada = this.multiplicaMatriz(matrizRotacao, verticesMatriz);
+
         
         var matrizPerspectiva = [
                     [ d + a * normal[0],     a * normal[1],     a * normal[2], -a * d0],

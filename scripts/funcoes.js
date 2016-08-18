@@ -41,9 +41,9 @@ function configurarVertices(numV) {
 		'" class="col-xs-12">' +
 	    '<label class="col-xs-3 text-center no-padding">V' + i + 
 	    ':</label>' +
-	    '<input id="v'+i+'-x" class="col-xs-3 no-padding" type="number" name="v'+i+'-x">' +
-	    '<input id="v'+i+'-y" class="col-xs-3 no-padding" type="number" name="v'+i+'-y">' +
-	    '<input id="v'+i+'-z" class="col-xs-3 no-padding" type="number" name="v'+i+'-z">' +
+	    '<input id="v'+i+'-x" class="col-xs-3 no-padding" onchange="configuraProjecao()" type="number" name="v'+i+'-x">' +
+	    '<input id="v'+i+'-y" class="col-xs-3 no-padding" onchange="configuraProjecao()" type="number" name="v'+i+'-y">' +
+	    '<input id="v'+i+'-z" class="col-xs-3 no-padding" onchange="configuraProjecao()" type="number" name="v'+i+'-z">' +
 	    '</div>' 
     }	
 }
