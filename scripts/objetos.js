@@ -49,6 +49,8 @@ function plotCubo(){
 
     setSuperficies(superficies);
 
+    document.getElementById("div-objetos").style.display = "none";
+
     configuraProjecao();
 }
 
@@ -108,6 +110,8 @@ function plotCasa(){
     superficies.push(s7);
 
     setSuperficies(superficies);
+
+    document.getElementById("div-objetos").style.display = "none";
 
     configuraProjecao();
 }
@@ -202,6 +206,8 @@ function plotCasaECubo(){
     superficies.push(s7);
 
     setSuperficies(superficies);
+
+    document.getElementById("div-objetos").style.display = "block";
 
     configuraProjecao();
 }

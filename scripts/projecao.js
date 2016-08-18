@@ -39,7 +39,7 @@ function Projecao(){
     this.eixoRotacao = "";
 
     this.Plot = function() {
-        var r0 = this.planoProj.p2;
+        var r0 = this.planoProj.p1;
 
         var normal = this.getNormal(this.planoProj.p1, this.planoProj.p2, this.planoProj.p3);
         var d0 = r0.x * normal[0] + r0.y * normal[1] + r0.z * normal[2];

@@ -1,5 +1,5 @@
 $(document).ready(function(){
-	plotCubo();
+	plotCasaECubo();
 });
 
 function configuraProjecao(){
@@ -170,6 +170,41 @@ function setVertices(vertices) {
     	document.getElementById("v"+(i+1)+"-y").value = vertices[i][1];
     	document.getElementById("v"+(i+1)+"-z").value = vertices[i][2];
 	}
+}
+
+
+function setVerticesTransladado() {
+	var comeco;
+	var fim;
+
+	var objeto = document.getElementById("objeto-trans").value;
+
+	var x = parseInt(document.getElementById("trans-x").value);
+	var y = parseInt(document.getElementById("trans-y").value);
+	var z = parseInt(document.getElementById("trans-z").value);
+
+	if (objeto == "cubo") {
+		comeco = 10;
+		fim = 18;
+	} else if (objeto == "casa") {
+		comeco = 0;
+		fim = 10;
+	}
+
+	for (var i = comeco; i < fim; i++) {
+    	var valX = parseInt(document.getElementById("v"+(i+1)+"-x").value);
+    	var valY = parseInt(document.getElementById("v"+(i+1)+"-y").value);
+    	var valZ = parseInt(document.getElementById("v"+(i+1)+"-z").value);
+
+    	valX += x;
+    	valY += y;
+    	valZ += z;
+
+    	document.getElementById("v"+(i+1)+"-x").value = valX;
+		document.getElementById("v"+(i+1)+"-y").value = valY;
+		document.getElementById("v"+(i+1)+"-z").value = valZ;
+	}
+	configuraProjecao();
 }
 
 function getNumVertices() {

@@ -93,6 +93,23 @@
             </div>
             <input id="angulo-rotacao" type="number" onchange="configuraProjecao()" name="">Angulo Rotação
         </div>
+        <div id="div-objetos" class="col-xs-12 no-padding">
+            <div class="col-xs-12 no-padding">
+                <p class="tipo-titulo">Objetos a Transladar</p>
+                <select id="objeto-trans" class="col-xs-2">
+                    <option value="cubo">Cubo</option>
+                    <option value="casa">Casa</option>
+                </select>
+            </div>
+            <label>X:</label>
+            <input id="trans-x" type="number" name="" value="0">
+            <label>Y:</label>
+            <input id="trans-y" type="number" name="" value="0">
+            <label>Z:</label>
+            <input id="trans-z" type="number" name="" value="0">
+            <button class="btn btn-objeto" onclick="setVerticesTransladado();">Transaladar</button>
+        </div>
+        
     </div>
 
     <div id="" class="projecao col-xs-2 bg1">
@@ -101,7 +118,11 @@
             <button class="col-xs-5 btn btn-objeto" onclick="plotCubo()" style="float:left;">Cubo</button>
             <button class="col-xs-5 btn btn-objeto" onclick="plotCasa()" style="float:right;">Casa</button>
             <button class="col-xs-5 btn btn-objeto" onclick="plotCasaECubo()" style="float:right; margin-top:5px">Casa+Cubo</button>
-            </div>
+        </div>
+        <div class="col-xs-12 no-padding">
+            <p class="tipo-titulo">Instruções</p>
+            <p>Escolha um objeto acima e aplique as transformações desejadas. A translação de objetos é exclusiva para projeções
+            com mais de um objeto, pois a centralização não permite a visualização de objetos únicos na cena.</p>
         </div>
     </div>
     <footer class="col-xs-12">
@@ -111,8 +132,11 @@
 </html>
 
 <script type="text/javascript" src="plugins/jquery.min.js"></script>
+<script src="http://code.jquery.com/ui/1.9.2/jquery-ui.js"></script>
+
 <script type="text/javascript" src="plugins/bootstrap.min.js"></script>
 <script type="text/javascript" src="plugins/jsgl.min.js"></script>
+<script type="text/javascript" src="plugins/slider.js"></script>
 
 <script type="text/javascript" src="scripts/funcoes.js"></script>
 <script type="text/javascript" src="scripts/projecao.js"></script>
@@ -120,4 +144,5 @@
 
 <link rel="stylesheet" type="text/css" href="css/bootstrap-3.3.6-dist/css/bootstrap.min.css">
 <link rel="stylesheet" type="text/css" href="css/style.css">
+<link rel="stylesheet" type="text/css" href="css/slider.css">
 <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700,300' rel='stylesheet' type='text/css'>
