@@ -37,6 +37,9 @@ function Projecao(){
         });
     }
 
+    this.anguloRotacao = 0;
+    this.eixoRotacao = "";
+
     this.Plot = function() {
         var r0 = this.planoProj.p2;
 
@@ -56,7 +59,43 @@ function Projecao(){
 
         var d1 = a * normal[0] + b * normal[1] + c * normal[2];
         var d = d0 - d1;
+        
+        var verticesMatriz = this.getVerticesMatriz();
+        var matrizAplicada = [];   
 
+        var anguloRad = this.anguloRotacao * (Math.PI/180);
+        
+        var matrizRotacao;
+        if (this.eixoRotacao != "z") { 
+            matrizRotacao = [
+                [ Math.cos(anguloRad), -Math.sin(anguloRad), 0, 0],
+                [ Math.sin(anguloRad),  Math.cos(anguloRad), 0, 0],
+                [            0,             0, 1, 0],
+                [            0,             0, 0, 1]
+            ];
+        }
+        
+        if (this.eixoRotacao != "y") { 
+            matrizRotacao = [
+                [ Math.cos(anguloRad), 0, Math.sin(anguloRad), 0],
+                [                   0, 1,                   0, 0],
+                [-Math.sin(anguloRad), 0, Math.cos(anguloRad), 0],
+                [                   0, 0,                   0, 1]
+            ];
+        }        
+
+        if (this.eixoRotacao != "x") { 
+            matrizRotacao = [
+                [ 1,                    0,                    0, 0],
+                [ 0,  Math.cos(anguloRad), -Math.sin(anguloRad), 0],
+                [ 0,  Math.sin(anguloRad),  Math.cos(anguloRad), 0],
+                [ 0,                    0,                    0, 1]
+            ];
+        }
+
+        if (this.anguloRotacao != 0) 
+            matrizAplicada = this.multiplicaMatriz(matrizRotacao, verticesMatriz);
+        
         var matrizPerspectiva = [
                     [ d + a * normal[0],     a * normal[1],     a * normal[2], -a * d0],
                     [     b * normal[0], d + b * normal[1],     b * normal[2], -b * d0],
@@ -66,17 +105,22 @@ function Projecao(){
 
         var matrizParalela = [
                     [  d1 - a * normal[0],    -a * normal[1],     -a * normal[2], a * d0],
-                    [     -b * normal[0], d1 - b * normal[1],     -b * normal[2], b * d0],
-                    [     -c * normal[0],    -c * normal[1],  d1 - c * normal[2], c * d0],
+                    [     -b * normal[0], d1  -b * normal[1],     -b * normal[2], b * d0],
+                    [     -c * normal[0],     -c * normal[1],  d1 -c * normal[2], c * d0],
                     [                  0,                 0,                  0,      d1]
         ];
 
-        var verticesMatriz = this.getVerticesMatriz();
-        var matrizAplicada = [];   
-        if (this.tipoProjecao === "perspectiva")  
-            matrizAplicada = this.multiplicaMatriz(matrizPerspectiva, verticesMatriz);
-        else 
-            matrizAplicada = this.multiplicaMatriz(matrizParalela, verticesMatriz);
+        if (this.tipoProjecao === "perspectiva") 
+            if (this.anguloRotacao != 0)  
+                matrizAplicada = this.multiplicaMatriz(matrizPerspectiva, matrizAplicada);
+            else
+                matrizAplicada = this.multiplicaMatriz(matrizPerspectiva, verticesMatriz);
+        else
+            if (this.anguloRotacao != 0)  
+                matrizAplicada = this.multiplicaMatriz(matrizParalela, matrizAplicada);
+            else
+                matrizAplicada = this.multiplicaMatriz(matrizParalela, verticesMatriz);
+
 
         matrizAplicada = this.transformaParaCartesiano(matrizAplicada);
 
@@ -105,7 +149,7 @@ function Projecao(){
         return max;
     }
 
-    this.plotMatriz = function(matriz){
+    this.plotMatriz = function(matriz) {
         objetoPlotado.clear();
         for (var i = 0; i < this.numSuperficies; i++) {
             for (var j = 0; j < this.superficies[i].length - 1; j++) {
@@ -123,7 +167,7 @@ function Projecao(){
         }
     }
 
-    this.multiplicaMatriz = function(matriz, verticesMatriz){
+    this.multiplicaMatriz = function(matriz, verticesMatriz) {
         var matrizAplicada = [];
         for (var i = 0; i < matriz.length; i++) {
             matrizAplicada.push([]);
@@ -137,7 +181,7 @@ function Projecao(){
         return matrizAplicada;
     }
 
-    this.getVerticesMatriz = function(){
+    this.getVerticesMatriz = function() {
         var verticesMatriz = [[], [], [], []];
         for (var i = 0; i < this.numVertices; i++) {
             verticesMatriz[0].push(this.vertices[i].x);
@@ -148,7 +192,7 @@ function Projecao(){
         return verticesMatriz;
     }
 
-    this.getNormal = function(p1, p2, p3){
+    this.getNormal = function(p1, p2, p3) {
         var normal = new Array();
 
         var u = [p2.x - p1.x, p2.y - p1.y, p2.z - p1.z];
@@ -164,7 +208,7 @@ function Projecao(){
         return normal;
     }
 
-    this.transformaParaCartesiano = function(matriz){
+    this.transformaParaCartesiano = function(matriz) {
         var matrizAplicada = [[], [], []];
         for (var i = 0; i < this.numVertices; i++) {
             matrizAplicada[0].push(matriz[0][i] / matriz[3][i]);
@@ -194,7 +238,7 @@ function Projecao(){
 
 }
 
-function plotarObjeto(){
+function plotarObjeto() {
     var canvas = new jsgl.Panel(document.getElementById("canvas"));
 
     this.conecta = function(ponto1, ponto2) {

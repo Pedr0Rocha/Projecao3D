@@ -16,6 +16,8 @@ function configuraProjecao(){
 
     projecao.numSuperficies = getNumSuperficies();
     projecao.superficies = getSuperficies();
+    projecao.anguloRotacao = getAngulo();
+    projecao.eixoRotacao = getEixo();
 
     projecao.Plot();
 }
@@ -179,4 +181,12 @@ function getNumSuperficies() {
 
 function getTipoProjecao() {
 	return document.getElementById("tipo-projecao").value;
+}
+
+function getAngulo() {
+	return document.getElementById("angulo-rotacao").value;
+}
+
+function getEixo() {
+	return document.getElementById("eixo-rotacao").value;
 }

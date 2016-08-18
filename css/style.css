@@ -1,5 +1,7 @@
 /* GERAL */
-
+footer {
+    margin: 10px 0px;
+}
 .ff-open {
     font-family: 'Open Sans', sans-serif;
 }
