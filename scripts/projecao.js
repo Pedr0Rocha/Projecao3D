@@ -47,10 +47,10 @@ function Projecao(){
         var d0 = r0.x * normal[0] + r0.y * normal[1] + r0.z * normal[2];
 
         if (this.tipoProjecao === "paralela") {
-            this.pontoVista.x = 0;
-            this.pontoVista.y = 0;
-            this.pontoVista.z = 1;
-            setPontoVista(0, 0, 1);
+            var ptVista = getPontoVista();
+            this.pontoVista.x = ptVista.x;
+            this.pontoVista.y = ptVista.y;
+            this.pontoVista.z = ptVista.z;
         }
 
         var a = this.pontoVista.x;
@@ -232,7 +232,7 @@ function Projecao(){
             [0, (vmax - vmin) / (max.y - min.y), (-min.y * (vmax - vmin) / (max.y - min.y)) + vmin],
             [0,  0,  1]
         ];
-        
+
         return this.multiplicaMatriz(matrizViewPort, matriz);
     }
 
