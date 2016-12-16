@@ -91,7 +91,7 @@
                     <option value="z">Z</option>
                 </select>
             </div>
-            <input id="angulo-rotacao" type="number" onchange="configuraProjecao()" name="">Angulo Rotação
+            <input id="angulo-rotacao" type="number" onchange="configuraProjecao()" name="" value="0"> Angulo Rotação (Graus)
         </div>
         <div id="div-objetos" class="col-xs-12 no-padding">
             <div class="col-xs-12 no-padding">
@@ -118,15 +118,17 @@
             <button class="col-xs-5 btn btn-objeto" onclick="plotCubo()" style="float:left;">Cubo</button>
             <button class="col-xs-5 btn btn-objeto" onclick="plotCasa()" style="float:right;">Casa</button>
             <button class="col-xs-5 btn btn-objeto" onclick="plotCasaECubo()" style="float:right; margin-top:5px">Casa+Cubo</button>
+            <button class="col-xs-5 btn btn-objeto" onclick="plotPrisma()" style="float:left; margin-top:5px">Prisma</button>
         </div>
         <div class="col-xs-12 no-padding">
             <p class="tipo-titulo">Instruções</p>
             <p>Escolha um objeto acima e aplique as transformações desejadas. A translação de objetos é exclusiva para projeções
-            com mais de um objeto, pois a centralização não permite a visualização de objetos únicos na cena.</p>
+            com mais de um objeto, pois a centralização não permite a visualização de objetos transladados únicos na cena.</p>
+            <p>Para criar um novo objeto basta digitar o numero de vertices e superficies, configurar e clicar no botão Plotar.</p>
         </div>
     </div>
     <footer class="col-xs-12">
-        <p class="texto-center">Computação Gráfica</p>
+        <p class="texto-center">Computação Gráfica - Pedro Rocha RA 68740, Lucas Perassoli RA 70896</p>
     </footer>
  </body>
 </html>

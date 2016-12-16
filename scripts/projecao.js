@@ -39,7 +39,7 @@ function Projecao(){
     this.eixoRotacao = "";
 
     this.Plot = function() {
-        var r0 = this.planoProj.p1;
+        var r0 = this.planoProj.p2;
 
         var normal = this.getNormal(this.planoProj.p1, this.planoProj.p2, this.planoProj.p3);
         var d0 = r0.x * normal[0] + r0.y * normal[1] + r0.z * normal[2];
@@ -68,8 +68,8 @@ function Projecao(){
             matrizRotacao = [
                 [ Math.cos(anguloRad), -Math.sin(anguloRad), 0, 0],
                 [ Math.sin(anguloRad),  Math.cos(anguloRad), 0, 0],
-                [            0,             0, 1, 0],
-                [            0,             0, 0, 1]
+                [            0,             0,               1, 0],
+                [            0,             0,               0, 1]
             ];
         }
         

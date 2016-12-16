@@ -54,6 +54,56 @@ function plotCubo(){
     configuraProjecao();
 }
 
+function plotPrisma(){
+    var numVertices = 6;
+    var numSuperficies = 5;
+
+    setPontoVista(0, 90, 10);
+
+    var p1 = [1, 0, 0];
+    var p2 = [0, 0, 0];
+    var p3 = [0, 1, 0];
+
+    setPlanoProjecao(p1, p2, p3);
+
+    configurarVertices(numVertices);
+    configurarSuperficies(numSuperficies);
+
+    var vertices = new Array();
+    var v1 = [0, 0, 0];
+    vertices.push(v1);
+    var v2 = [2, 0, 0];
+    vertices.push(v2);
+    var v3 = [2, 3, 0];
+    vertices.push(v3);
+    var v4 = [0, 3, 0];
+    vertices.push(v4);
+    var v5 = [1, 2, 1];
+    vertices.push(v5);
+    var v6 = [1, 1, 1];
+    vertices.push(v6);
+
+    setVertices(vertices);
+
+    var superficies = new Array();
+    var s1 = "1-2-6";
+    superficies.push(s1);
+    var s2 = "2-3-5-6";
+    superficies.push(s2);
+    var s3 = "3-4-5";
+    superficies.push(s3);
+    var s4 = "1-6-5-4";
+    superficies.push(s4);
+    var s5 = "1-4-3-2";
+    superficies.push(s5);
+
+    setSuperficies(superficies);
+
+    document.getElementById("div-objetos").style.display = "none";
+
+    configuraProjecao();
+}
+
 function plotCasa(){
     var numVertices = 10;
     var numSuperficies = 7;
